@@ -9,12 +9,29 @@ const state = {
     searchfield: ''
 }
 class App extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            robots: robots,
+            searchfield: ''
+        }
+
+        // this.onSearchChange = this.onSearchChange.bind(this);
+    }
+
+    onSearchChange = (event) => {
+        this.setState({searchfield: event.target.value});
+    }
+
     render() {
+        const filteredRobots = this.state.robots.filter(robots =>{
+            return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        })
         return(
             <div className='tc'>
                 <h1>RoboBuddies</h1>
-                <SearchBox />
-                <CardList robots={robots} />
+                <SearchBox searchChange={this.onSearchChange} />
+                <CardList robots={filteredRobots} />
             </div>
     
         );
