@@ -5,15 +5,13 @@ import SearchBox from './SearchBox';
 import './App.css';
 
 
-const state = {
-    robots: robots,
-    searchfield: ''
-}
+
+
 class App extends React.Component {
     constructor(){
         super()
         this.state = {
-            robots: robots,
+            robots: [],
             searchfield: ''
         }
 
